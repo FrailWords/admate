@@ -1,3 +1,15 @@
+# Pre-requisite
+
+Make sure you have Nodejs (and npm) installed
+
+You can download the installer from - https://nodejs.org/en/download/
+
+or if you are on a mac, you can do - 
+
+```shell
+brew install node
+```
+
 # Create .env file 
 Create a .env file with the following contents - 
 
@@ -20,6 +32,11 @@ real_estate
 streaming_and_online_tv
 travel_and_tourism
 vehicles
+```
+
+## Install dependencies
+```shell
+npm install
 ```
 
 ## Running the app
