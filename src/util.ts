@@ -11,11 +11,11 @@ export const delay = (time: number) => {
 // @ts-ignore
 export const scrollTowardsBottom = async (page: Page) => await scrollPageToBottom(page, {
     size: 500,
-    delay: 250
+    delay: 50
 })
 
 // @ts-ignore
 export const scrollTowardsTop = async (page: Page) => await scrollPageToTop(page, {
     size: 500,
-    delay: 250
+    delay: 50
 })

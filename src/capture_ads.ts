@@ -1,7 +1,6 @@
 import {addExtra} from 'puppeteer-extra'
 import vanillaPuppeteer, {PuppeteerLaunchOptions} from "puppeteer";
 import StealthPlugin from 'puppeteer-extra-plugin-stealth';
-import {env} from 'process';
 import {delay} from "./util.js";
 
 import {Entry} from "buttercup";
@@ -11,16 +10,8 @@ import * as fs from "fs";
 
 
 export const visit = async (profile: Entry) => {
-    //TODO: remove this later
-    if (!env["GUSER"] || !env["GPASS"]) throw 'Set GUSER and GPASS';
-
-    //TODO: remove this later
-    const USERNAME = env["GUSER"];
-    const PASSWORD = env["GPASS"];
-
-    // Replace with this -
-    // const USERNAME = profile.getProperty('usename');
-    // const PASSWORD = profile.getProperty('usename');
+    const USERNAME = profile.getProperty('username') as string;
+    const PASSWORD = profile.getProperty('password') as string;
 
     const options: PuppeteerLaunchOptions = {
         headless: false,

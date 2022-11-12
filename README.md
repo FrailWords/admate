@@ -21,3 +21,9 @@ streaming_and_online_tv
 travel_and_tourism
 vehicles
 ```
+
+## Running the app
+
+```shell
+npm run start
+```
