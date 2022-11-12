@@ -3,8 +3,6 @@ import vanillaPuppeteer, {PuppeteerLaunchOptions} from "puppeteer";
 import StealthPlugin from 'puppeteer-extra-plugin-stealth';
 import {env} from 'process';
 import {delay} from "./util.js";
-// import {GoogleSearcher} from "./google_search.js";
-// import {randomUUID} from "crypto";
 
 import {Entry} from "buttercup";
 import {WebsiteVisitor} from "./website_visitor.js";
@@ -15,6 +13,14 @@ import * as fs from "fs";
 export const visit = async (profile: Entry) => {
     //TODO: remove this later
     if (!env["GUSER"] || !env["GPASS"]) throw 'Set GUSER and GPASS';
+
+    //TODO: remove this later
+    const USERNAME = env["GUSER"];
+    const PASSWORD = env["GPASS"];
+
+    // Replace with this -
+    // const USERNAME = profile.getProperty('usename');
+    // const PASSWORD = profile.getProperty('usename');
 
     const options: PuppeteerLaunchOptions = {
         headless: false,
@@ -35,7 +41,7 @@ export const visit = async (profile: Entry) => {
     await page.goto('https://accounts.google.com/v3/signin/identifier?dsh=S-889076191%3A1667933776610676&continue=https%3A%2F%2Fmail.google.com%2Fmail%2F&rip=1&sacu=1&service=mail&flowName=GlifWebSignIn&flowEntry=ServiceLogin&ifkv=ARgdvAuSj61Lh246-HEq3m7Em3UaLHiy6tAhNcd97cPmo0fl1cb5EDzhcabE4EARC9nhtfOxMzHkvg');
 
     await page.waitForSelector('input[type="email"]')
-    await page.type('input[type="email"]', env["GUSER"]);
+    await page.type('input[type="email"]', USERNAME);
 
     await Promise.all([
         page.waitForNavigation(),
@@ -45,7 +51,7 @@ export const visit = async (profile: Entry) => {
     await delay(2000);
 
     await page.waitForSelector('input[type="password"]', {visible: true});
-    await page.type('input[type="password"]', env["GPASS"]);
+    await page.type('input[type="password"]', PASSWORD);
     await page.keyboard.press('Enter')
 
     await page.waitForNavigation();
@@ -56,56 +62,10 @@ export const visit = async (profile: Entry) => {
     const websites = fs.readFileSync(filePath, 'utf-8')
         .split('\n')
         .filter(Boolean);
+
     await WebsiteVisitor(browser, websites)
 
-    // await GoogleSearcher(browser, ["baby food", "baby health", "huggies"])
-
-    await page.evaluate(() => {
-        // @ts-ignore
-        document["scrollingElement"]?.scrollTop = document.body.scrollHeight
-    })
-
-    await delay(5000);
-
-// const screenshot_ads = async () => {
-//     const ads = await page.$$('iframe[id^="google_ads_iframe"]')
-//     for (const ad of ads) {
-//         const uuid = randomUUID()
-//         await delay(1000);
-//         try {
-//             await ad.focus()
-//             await ad.hover()
-//         } catch (_) {
-//         }
-//         const box = (await ad.boundingBox()) || undefined
-//         await page.screenshot({
-//             clip: box, path: `${uuid}.jpg`
-//         })
-//     }
-// }
-
-// await screenshot_ads()
-
-// await page.reload()
-
-    await delay(2000);
-
-
-    await page.screenshot({
-        path: 'page.png', fullPage: true
-    })
-
-// await page.screenshot({'path': `banner_ad.png`, 'clip': {'x': 100, 'y': 100, 'width': 500, 'height': 500}});     // take screenshot of the required area in puppeteer
-
-    await delay(1000);
-
-// print user id
-// await page.waitForFunction(() => window?.branch?.g);
-// const myId = await page.evaluate(() => window.branch.g);
-// console.log("myId:", myId);
-
     await browser.close();
-
 }
 
 

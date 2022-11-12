@@ -23,6 +23,7 @@
   },
   "dependencies": {
     "buttercup": "^6.16.5",
+    "dotenv": "^16.0.3",
     "lodash": "^4.17.21",
     "node-credentials": "^1.5.0",
     "process": "^0.11.10",

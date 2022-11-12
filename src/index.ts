@@ -2,6 +2,9 @@ import {visit} from "./capture_ads.js";
 import pkg from 'buttercup';
 import {env, exit} from "process";
 const { Credentials, FileDatasource, Vault, init } = pkg;
+import dotenv from "dotenv";
+
+dotenv.config()
 
 init()
 
