@@ -1,0 +1,35 @@
+{
+  "name": "admate2",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "rimraf ./build && tsc",
+    "start": "npm run build && node src/index.js",
+    "creds": "npm run build && node src/store_creds.js",
+    "start:dev": "nodemon"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "module",
+  "devDependencies": {
+    "@types/node": "^18.11.9",
+    "nodemon": "^2.0.20",
+    "rimraf": "^3.0.2",
+    "ts-node": "^10.9.1",
+    "typescript": "^4.8.4"
+  },
+  "dependencies": {
+    "buttercup": "^6.16.5",
+    "lodash": "^4.17.21",
+    "node-credentials": "^1.5.0",
+    "process": "^0.11.10",
+    "puppeteer": "^19.2.2",
+    "puppeteer-autoscroll-down": "^1.1.1",
+    "puppeteer-extra": "^3.3.4",
+    "puppeteer-extra-plugin-stealth": "^2.11.1",
+    "uuid": "^9.0.0"
+  }
+}
