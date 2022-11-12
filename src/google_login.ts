@@ -1,6 +1,6 @@
 import {Entry} from "buttercup";
 import {Browser} from "puppeteer";
-import {delay} from "./util";
+import {delay} from "./util.js";
 
 export const login = async (browser: Browser, profile: Entry) => {
     const USERNAME = profile.getProperty('username') as string;
