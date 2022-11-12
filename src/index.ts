@@ -3,7 +3,7 @@ import pkg from 'buttercup';
 import {env, exit} from "process";
 const { Credentials, FileDatasource, Vault, init } = pkg;
 import dotenv from "dotenv";
-import {login} from "./google_login";
+import {login} from "./google_login.js";
 import vanillaPuppeteer, {PuppeteerLaunchOptions} from "puppeteer";
 import {addExtra} from "puppeteer-extra";
 import StealthPlugin from "puppeteer-extra-plugin-stealth";

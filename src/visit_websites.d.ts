@@ -1,3 +1,4 @@
+import { Browser } from "puppeteer";
 import { Entry } from "buttercup";
-export declare const visit: (profile: Entry) => Promise<void>;
-//# sourceMappingURL=capture_ads.d.ts.map
+export declare const visit: (browser: Browser, profile: Entry) => Promise<void>;
+//# sourceMappingURL=visit_websites.d.ts.map
