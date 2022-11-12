@@ -1,4 +1,4 @@
-import {visit} from "./capture_ads.js";
+import {visit} from "./visit_websites.js";
 import pkg from 'buttercup';
 import {env, exit} from "process";
 const { Credentials, FileDatasource, Vault, init } = pkg;
