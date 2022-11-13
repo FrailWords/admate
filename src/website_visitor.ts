@@ -4,6 +4,7 @@ import {scrollTowardsBottom, scrollTowardsTop} from "./util.js";
 export const WebsiteVisitor = async (browser: Browser, websites: string[]) => {
     for (const site of websites) {
         const url = `https://www.${site}`
+        console.log("Started visiting -", url);
         const page = await browser.newPage();
         await page.setDefaultNavigationTimeout(0);
         await page.goto(url);
@@ -14,5 +15,6 @@ export const WebsiteVisitor = async (browser: Browser, websites: string[]) => {
             await scrollTowardsTop(page);
         }
         await page.close()
+        console.log("Done visiting -", url);
     }
 }
