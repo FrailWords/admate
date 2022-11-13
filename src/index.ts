@@ -36,7 +36,7 @@ const puppeteer = addExtra(vanillaPuppeteer);
 puppeteer.use(StealthPlugin());
 const browser = await puppeteer.launch(options);
 
-const thisProfile = await getProfile(profile);
+const thisProfile = await getProfile(profile!);
 
 // Login into Google
 await login(browser, thisProfile);
