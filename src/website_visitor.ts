@@ -6,8 +6,12 @@ export const WebsiteVisitor = async (browser: Browser, websites: string[]) => {
         const url = `https://www.${site}`
         console.log("Started visiting -", url);
         const page = await browser.newPage();
-        await page.setDefaultNavigationTimeout(0);
-        await page.goto(url);
+        try {
+            await page.goto(url, {waitUntil: 'load', timeout: 10000})
+        } catch (e) {
+            console.error('Error visiting website: ', e);
+            continue;
+        }
         for(let i = 0; i < 5; i++){
             await scrollTowardsBottom(page);
         }
