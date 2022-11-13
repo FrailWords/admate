@@ -15,6 +15,12 @@ export const login = async (browser: Browser, profile: Entry) => {
 
     await page.goto('https://accounts.google.com/v3/signin/identifier?dsh=S-889076191%3A1667933776610676&continue=https%3A%2F%2Fmail.google.com%2Fmail%2F&rip=1&sacu=1&service=mail&flowName=GlifWebSignIn&flowEntry=ServiceLogin&ifkv=ARgdvAuSj61Lh246-HEq3m7Em3UaLHiy6tAhNcd97cPmo0fl1cb5EDzhcabE4EARC9nhtfOxMzHkvg');
 
+    const currentUrl = page.url();
+    if (currentUrl.indexOf('https://mail.google.com/') != -1) {
+        console.log("Already logged in!");
+        return;
+    }
+
     await page.waitForSelector('input[type="email"]')
     await page.type('input[type="email"]', USERNAME);
 
