@@ -3,6 +3,7 @@ node_modules/
 credentials.yaml.key
 **/*.js
 **/*.map
+**/*.d.ts
 src/store_creds.*
 tsconfig.tsbuildinfo
 *.png
