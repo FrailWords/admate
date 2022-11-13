@@ -7,3 +7,4 @@ src/store_creds.*
 tsconfig.tsbuildinfo
 *.png
 .idea
+user-data
