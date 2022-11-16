@@ -32,6 +32,10 @@ const options: PuppeteerLaunchOptions = {
     slowMo: 10, // slow down by 10ms
     args: ['--no-default-browser-check', '--disable-dev-shm-usage', `--user-data-dir=user-data/${profile}`]
 }
+if (env['CHROME_PATH']) {
+    options['executablePath'] = env['CHROME_PATH']
+}
+
 const puppeteer = addExtra(vanillaPuppeteer);
 puppeteer.use(StealthPlugin());
 const browser = await puppeteer.launch(options);
