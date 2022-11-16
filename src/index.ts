@@ -30,7 +30,7 @@ const options: PuppeteerLaunchOptions = {
     headless: true,
     devtools: false,
     slowMo: 10, // slow down by 10ms
-    args: ['--no-default-browser-check', '--disable-dev-shm-usage', `--user-data-dir=user-data/${profile}`, '--use-gl=egl']
+    args: ['--no-default-browser-check', '--disable-dev-shm-usage', `--user-data-dir=user-data/${profile}`]
 }
 if (env['CHROME_PATH']) {
     options['executablePath'] = env['CHROME_PATH']
