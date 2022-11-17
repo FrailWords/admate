@@ -25,7 +25,7 @@ rimraf.sync(path.join(profileDataPath, 'Default', 'Cache'));
 rimraf.sync(path.join(profileDataPath, 'Default', 'Code Cache'));
 rimraf.sync(path.join(profileDataPath, 'Default', 'DawnCache'));
 
-const profileDirectory = env['PROFILE_DIR'] || `user-data/${profile}`
+const profileDirectory = `${env['PROFILE_DIR']}/${profile}` || `user-data/${profile}`
 
 // initialize puppeteer
 const options: PuppeteerLaunchOptions = {
