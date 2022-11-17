@@ -7,6 +7,7 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "rimraf ./build && tsc",
     "start": "npm run build && node src/index.js",
+    "profile": "node src/index.js",
     "creds": "npm run build && node src/store_creds.js",
     "start:dev": "nodemon"
   },
