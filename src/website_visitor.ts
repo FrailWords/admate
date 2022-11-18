@@ -1,8 +1,9 @@
 import {Browser} from "puppeteer";
 import {scrollTowardsBottom, scrollTowardsTop} from "./util.js";
+import _ from 'lodash';
 
 export const WebsiteVisitor = async (browser: Browser, websites: string[]) => {
-    for (const site of websites) {
+    for (const site of _.sampleSize(websites, 20)) {
         const url = `https://www.${site}`
         const page = await browser.newPage();
         try {
