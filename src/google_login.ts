@@ -13,10 +13,21 @@ export const login = async (browser: Browser, profile: Entry) => {
         'accept-language': 'en-US,en;q=0.9,hy;q=0.8'
     });
 
-    await page.goto('https://accounts.google.com/AccountChooser?service=mail&amp;continue=https://mail.google.com/mail/',
+    // First logout
+    await page.goto('https://accounts.google.com/Logout?service=mail&amp;continue=https://mail.google.com/mail/', { waitUntil: 'networkidle2' })
+
+    await page.goto('https://accounts.google.com/Login?service=mail&amp;continue=https://mail.google.com/mail/',
         { waitUntil: 'networkidle2' });
 
     const currentUrl = page.url();
+    if(currentUrl.indexOf('signinchooser') !== -1) {
+        const selectAnotherAccount = await page.$x('//div[text()="Use another account"]');
+        if (selectAnotherAccount && selectAnotherAccount.length > 0) {
+            // @ts-ignore
+            await selectAnotherAccount[0].click()
+        }
+    }
+
     if (currentUrl.indexOf('https://mail.google.com/') != -1) {
         console.log("Already logged in!");
         return;
