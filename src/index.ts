@@ -39,7 +39,10 @@ if (env['CHROME_PATH']) {
 }
 
 const puppeteer = addExtra(vanillaPuppeteer);
-puppeteer.use(StealthPlugin());
+const stealthPlugin = StealthPlugin();
+stealthPlugin.enabledEvasions.delete('iframe.contentWindow');
+stealthPlugin.enabledEvasions.delete('navigator.plugins');
+puppeteer.use(stealthPlugin);
 const browser = await puppeteer.launch(options);
 
 const thisProfile = await getProfile(profile!);

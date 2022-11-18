@@ -8,6 +8,7 @@ export const login = async (browser: Browser, profile: Entry) => {
 
     const page = await browser.newPage();
     page.setDefaultNavigationTimeout(0);
+    await page.setBypassCSP(true);
 
     await page.setExtraHTTPHeaders({
         'accept-language': 'en-US,en;q=0.9,hy;q=0.8'
