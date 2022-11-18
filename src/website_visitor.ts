@@ -7,7 +7,7 @@ export const WebsiteVisitor = async (browser: Browser, websites: string[]) => {
         const page = await browser.newPage();
         try {
             console.log("Started visiting -", url);
-            await page.goto(url, {waitUntil: 'load', timeout: 10000})
+            await page.goto(url, {waitUntil: 'load', timeout: 30000})
             for (let i = 0; i < 5; i++) {
                 await scrollTowardsBottom(page);
             }
