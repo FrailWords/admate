@@ -18,14 +18,13 @@ if (profile === undefined) {
     exit(0)
 }
 
-// Cleanup cache in profile data
-const profileDataPath = path.join(`${env['PROFILE_DIR']}`, profile)
-rimraf.sync(path.join(profileDataPath, 'DevToolsActivePort'));
-rimraf.sync(path.join(profileDataPath, 'Default', 'Cache'));
-rimraf.sync(path.join(profileDataPath, 'Default', 'Code Cache'));
-rimraf.sync(path.join(profileDataPath, 'Default', 'DawnCache'));
-
 const profileDirectory = env['PROFILE_DIR'] ? `${env['PROFILE_DIR']}/${profile}` : `user-data/${profile}`;
+
+// Cleanup cache in profile data
+rimraf.sync(path.join(profileDirectory, 'DevToolsActivePort'));
+rimraf.sync(path.join(profileDirectory, 'Default', 'Cache'));
+rimraf.sync(path.join(profileDirectory, 'Default', 'Code Cache'));
+rimraf.sync(path.join(profileDirectory, 'Default', 'DawnCache'));
 
 // initialize puppeteer
 const options: PuppeteerLaunchOptions = {
