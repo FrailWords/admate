@@ -19,7 +19,7 @@ if (profile === undefined) {
 }
 
 // Cleanup cache in profile data
-const profileDataPath = path.join('.', 'user-data', profile)
+const profileDataPath = path.join(`${env['PROFILE_DIR']}`, profile)
 rimraf.sync(path.join(profileDataPath, 'DevToolsActivePort'));
 rimraf.sync(path.join(profileDataPath, 'Default', 'Cache'));
 rimraf.sync(path.join(profileDataPath, 'Default', 'Code Cache'));
