@@ -27,11 +27,13 @@ rimraf.sync(path.join(profileDirectory, 'Default', 'Code Cache'));
 rimraf.sync(path.join(profileDirectory, 'Default', 'DawnCache'));
 
 // initialize puppeteer
+const chromeArgs = ['--disable-gpu', '--no-sandbox', '--disable-setuid-sandbox',
+    '--no-default-browser-check', '--disable-dev-shm-usage', `--user-data-dir=${profileDirectory}`]
 const options: PuppeteerLaunchOptions = {
     headless: true,
     devtools: false,
     slowMo: 10, // slow down by 10ms
-    args: ['--no-default-browser-check', '--disable-dev-shm-usage', `--user-data-dir=${profileDirectory}`]
+    args: chromeArgs
 }
 if (env['CHROME_PATH']) {
     options['executablePath'] = env['CHROME_PATH']
